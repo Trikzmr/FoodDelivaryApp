@@ -2,7 +2,7 @@ import { CoolBlue, ElegentPurple, WarmOrange,  FreshGreen, Dark} from "./Theme";
 
 
 
-let palette = { ...FreshGreen };
+let palette = { ...WarmOrange };
 
 export const colors = {
 	...palette,

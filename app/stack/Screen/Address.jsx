@@ -8,8 +8,11 @@ import {
 } from "react-native";
 import Header from "../../components/Header";
 import { colors } from "../../Config/colorpallete";
+import { useRouter } from "expo-router";  
+
 
 export default function Address() {
+  const router = useRouter();
 
   const addresses = [
     {
@@ -65,7 +68,7 @@ export default function Address() {
       </ScrollView>
 
       {/* Add New Address */}
-      <TouchableOpacity style={styles.addButton}>
+      <TouchableOpacity style={styles.addButton} onPress={() => router.push("stack/Screen/AddAddress")}>
         <Text style={styles.addButtonText}>ADD NEW ADDRESS</Text>
       </TouchableOpacity>
     </View>

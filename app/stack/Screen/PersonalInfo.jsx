@@ -12,7 +12,7 @@ export default function PersonalInfo() {
       <Header
         title="Personal Info"
         rightComponent={
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => router.push("/stack/Screen/EditProfile")}>
             <Text style={styles.editText}>EDIT</Text>
           </TouchableOpacity>
         }

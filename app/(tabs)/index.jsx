@@ -80,12 +80,12 @@ export default function Home() {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.cartButton}>
+          <TouchableOpacity onPress={()=>router.push("(tabs)/cart")} style={styles.cartButton}>
             <Feather name="shopping-bag" size={18} color="white" />
             <View style={styles.cartBadge}>
               <Text style={styles.cartBadgeText}>2</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
 
         {/* Greeting */}
