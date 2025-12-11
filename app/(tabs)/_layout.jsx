@@ -1,8 +1,10 @@
 import { Feather, Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dimensions, FlatList, Image, Modal, Platform, Text, TouchableOpacity, View } from 'react-native';
 import { colors } from '../Config/colorpallete';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter} from 'expo-router';
 
 const { width } = Dimensions.get('window');
 const TAB_BAR_HEIGHT = width < 380 ? 50 : 60;
@@ -11,11 +13,14 @@ const ICON_SIZE = width < 380 ? 20 : 24;
 
 export default function TabLayout() {
   const [cartVisible, setCartVisible] = useState(false);
+  
 
   const cartItems = [
     { id: 1, name: 'Cheese Pizza', price: '$10', image: 'https://via.placeholder.com/120' },
     { id: 2, name: 'Veg Burger', price: '$8', image: 'https://via.placeholder.com/120' },
   ];
+
+
 
   return (
     <>

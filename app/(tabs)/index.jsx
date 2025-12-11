@@ -1,6 +1,6 @@
 import { Feather, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Image,
   ScrollView,
@@ -13,9 +13,27 @@ import SearchBox from "../components/SearchBox";
 import SlidingMenu from "../components/SideMenu"; // ✅ Import here
 import { colors } from "../Config/colorpallete";
 import styles from "../Style/HomeStyles";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Home() {
-  const router = useRouter();
+    const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(()=>{
+    const checkLoginStatus = async () => {
+      try {
+        const userToken = await AsyncStorage.getItem('userToken');
+        //setIsLoggedIn(!!userToken);
+        if(!userToken){
+          router.replace('/stack/Screen/Login');
+        }
+      } catch (e) {
+        console.error('Failed to fetch the data from storage');
+      }
+    };
+
+    checkLoginStatus();
+  },[]);
+
   const [menuVisible, setMenuVisible] = useState(false);
 
   const toggleMenu = () => setMenuVisible(!menuVisible);

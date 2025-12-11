@@ -1,14 +1,14 @@
-import React, { useRef, useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Animated,
-  Dimensions,
-  StyleSheet,
-} from "react-native";
 import { useRouter } from "expo-router";
+import { useRef, useState } from "react";
+import {
+    Animated,
+    Dimensions,
+    Image,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
 import { colors } from "./Config/colorpallete";
 
 const { width } = Dimensions.get("window");

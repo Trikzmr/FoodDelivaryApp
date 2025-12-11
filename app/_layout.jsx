@@ -1,9 +1,10 @@
 // App.js or RootLayout.js
-import React, { useEffect, useState } from "react";
-import { View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Slot, Redirect } from "expo-router";
+import { Redirect, Slot } from "expo-router";
 import * as SplashScreenExpo from "expo-splash-screen"; // rename to avoid conflict
+import React, { useEffect, useState } from "react";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 import SplashScreen from "./SplashScreen"; // your splash screen component
 
 export default function RootLayout() {
@@ -44,6 +45,10 @@ export default function RootLayout() {
   // If first launch, redirect to intro screen
   if (isFirstLaunch) return <Redirect href="/Intro" />;
 
-  // Otherwise, go to main app
-  return <Slot />;
+  // Otherwise, go to main app with Redux Provider
+  return (
+    <Provider store={store}>
+      <Slot />
+    </Provider>
+  );
 }
